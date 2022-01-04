@@ -1,6 +1,7 @@
 import 'package:cubit_tutorial/theme/colors.dart';
 import 'package:cubit_tutorial/widgets/app_large_text.dart';
 import 'package:cubit_tutorial/widgets/app_text.dart';
+import 'package:cubit_tutorial/widgets/responsive_button.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -40,7 +41,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       AppLargeText(text: 'Trips'),
                       AppText(
                         text: 'Mountain',
@@ -56,6 +57,8 @@ class _WelcomePageState extends State<WelcomePage> {
                           size: 14,
                         ),
                       ),
+                      SizedBox(height: 40,),
+                      ResponsiveButton(width: 120,),
                     ],
                   ),
                 ],
