@@ -1,3 +1,6 @@
+import 'package:cubit_tutorial/theme/colors.dart';
+import 'package:cubit_tutorial/widgets/app_large_text.dart';
+import 'package:cubit_tutorial/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -28,17 +31,31 @@ class _WelcomePageState extends State<WelcomePage> {
             // BoxDecorationで画像を設定すると背景画像になる
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/' + images[index]),
-                fit: BoxFit.cover
-              ),
+                  image: AssetImage('assets/images/' + images[index]),
+                  fit: BoxFit.cover),
             ),
             child: Container(
               margin: const EdgeInsets.only(left: 20, top: 150, right: 20),
               child: Row(
                 children: [
                   Column(
-                    children: [
-                      
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      AppLargeText(text: 'Trips'),
+                      AppText(
+                        text: 'Mountain',
+                        size: 30,
+                      ),
+                      SizedBox(height: 20,),
+                      SizedBox(
+                        width: 250,
+                        child: AppText(
+                          text:
+                              'Mountain hikes give you an incredible sense of freedom along with endurance tests',
+                          color: AppColors.textColor2,
+                          size: 14,
+                        ),
+                      ),
                     ],
                   ),
                 ],
