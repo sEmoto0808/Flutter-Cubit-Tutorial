@@ -38,6 +38,7 @@ class _WelcomePageState extends State<WelcomePage> {
             child: Container(
               margin: const EdgeInsets.only(left: 20, top: 150, right: 20),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,7 +48,9 @@ class _WelcomePageState extends State<WelcomePage> {
                         text: 'Mountain',
                         size: 30,
                       ),
-                      SizedBox(height: 20,),
+                      SizedBox(
+                        height: 20,
+                      ),
                       SizedBox(
                         width: 250,
                         child: AppText(
@@ -57,9 +60,32 @@ class _WelcomePageState extends State<WelcomePage> {
                           size: 14,
                         ),
                       ),
-                      SizedBox(height: 40,),
-                      ResponsiveButton(width: 120,),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      ResponsiveButton(
+                        width: 120,
+                      ),
                     ],
+                  ),
+                  // PageのIndexを表示
+                  Column(
+                    children: List.generate(
+                      images.length,
+                      (indexDots) {
+                        return Container(
+                          margin: const EdgeInsets.only(bottom: 2),
+                          width: 8,
+                          height: index == indexDots ? 25 : 8,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: index == indexDots
+                                ? AppColors.mainColor
+                                : AppColors.mainColor.withOpacity(0.3),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),
