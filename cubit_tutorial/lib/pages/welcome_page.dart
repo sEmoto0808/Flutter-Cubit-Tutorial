@@ -25,10 +25,23 @@ class _WelcomePageState extends State<WelcomePage> {
           return Container(
             width: double.maxFinite,
             height: double.maxFinite,
+            // BoxDecorationで画像を設定すると背景画像になる
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/' + images[index]),
                 fit: BoxFit.cover
+              ),
+            ),
+            child: Container(
+              margin: const EdgeInsets.only(left: 20, top: 150, right: 20),
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+                      
+                    ],
+                  ),
+                ],
               ),
             ),
           );
