@@ -20,14 +20,29 @@ class _MainPageState extends State<MainPage> {
     MyPage(),
   ];
 
+  var currentIndex = 0;
+
+  void onTap(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[0],
+      body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        onTap: onTap,
+        currentIndex: currentIndex,
         // 色を設定しないとデフォルトではprimaryColorが使われる
         selectedItemColor: Colors.black54,
         unselectedItemColor: Colors.grey.withOpacity(0.5),
+        // ラベルの表示・非表示を設定できる
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        elevation: 0,
         items: const [
           BottomNavigationBarItem(
             label: 'Home',
