@@ -1,3 +1,4 @@
+import 'package:cubit_tutorial/pages/bottom_navigation/main_page.dart';
 import 'package:cubit_tutorial/pages/welcome_page.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: WelcomePage(),
+      // home: WelcomePage(),
+      home: MainPage(),
     );
   }
 }
