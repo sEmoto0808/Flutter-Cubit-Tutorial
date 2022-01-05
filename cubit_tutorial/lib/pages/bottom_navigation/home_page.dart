@@ -1,6 +1,7 @@
 import 'package:cubit_tutorial/theme/colors.dart';
 import 'package:cubit_tutorial/widgets/app_large_text.dart';
 import 'package:cubit_tutorial/widgets/app_text.dart';
+import 'package:cubit_tutorial/widgets/circle_tab_indicator.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -196,41 +197,3 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 }
 
-class CircleTabIndicator extends Decoration {
-  final Color color;
-  final double radius;
-
-  const CircleTabIndicator({required this.color, required this.radius});
-
-  @override
-  BoxPainter createBoxPainter([VoidCallback? onChanged]) {
-    return CirclePainter(color: color, radius: radius);
-  }
-}
-
-class CirclePainter extends BoxPainter {
-  final Color color;
-  final double radius;
-
-  const CirclePainter({required this.color, required this.radius});
-
-  @override
-  void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
-    final paint = Paint();
-    paint.color = color;
-    paint.isAntiAlias = true;
-
-    // 位置調整
-    // NOTE: configuration(ImageConfiguration)がタップした領域の情報を持っている
-    final circleOffset = Offset(
-      configuration.size!.width / 2 - radius / 2,
-      configuration.size!.height - radius,
-    );
-
-    canvas.drawCircle(
-      offset + circleOffset,
-      radius,
-      paint,
-    );
-  }
-}
