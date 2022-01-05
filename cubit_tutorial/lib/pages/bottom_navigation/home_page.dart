@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late final TabController _tabController;
 
-  final imagesMap = {
+  static const _imagesMap = {
     'Balloning': 'balloning.png',
     'Hiking': 'hiking.png',
     'Kayaking': 'kayaking.png',
@@ -187,7 +187,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         scrollDirection: Axis.horizontal,
         itemCount: 4,
         itemBuilder: (_, index) {
-          final image = imagesMap[index];
+          final image = _imagesMap[index];
           return Container(
             margin: const EdgeInsets.only(right: 30),
             child: Column(
@@ -202,14 +202,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     image: DecorationImage(
                       image: AssetImage(
                         'assets/images/' +
-                            imagesMap.values.elementAt(index),
+                            _imagesMap.values.elementAt(index),
                       ),
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
                 AppText(
-                  text: imagesMap.keys.elementAt(index),
+                  text: _imagesMap.keys.elementAt(index),
                   color: AppColors.textColor2,
                 ),
               ],
