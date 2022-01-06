@@ -1,3 +1,6 @@
+import 'package:cubit_tutorial/theme/colors.dart';
+import 'package:cubit_tutorial/widgets/app_large_text.dart';
+import 'package:cubit_tutorial/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 
 class DetailPage extends StatefulWidget {
@@ -8,10 +11,12 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  int gottenStars = 4;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: double.maxFinite,
         height: double.maxFinite,
         // StackとPositionedを使ってオーバーラップを実装する
@@ -43,6 +48,82 @@ class _DetailPageState extends State<DetailPage> {
                     color: Colors.white,
                   )
                 ],
+              ),
+            ),
+            // Content Detail
+            Positioned(
+              top: 320,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: 500,
+                padding: const EdgeInsets.only(
+                  left: 20,
+                  top: 30,
+                  right: 20,
+                ),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Yosemite Text
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        AppLargeText(
+                          text: 'Yosemite',
+                          color: Colors.black.withOpacity(0.8),
+                        ),
+                        const AppLargeText(
+                          text: '\$ 250',
+                          color: AppColors.mainColor,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      children: const [
+                        Icon(
+                          Icons.location_on,
+                          color: AppColors.mainColor,
+                        ),
+                        SizedBox(width: 5),
+                        AppText(
+                          text: 'USA, California',
+                          color: AppColors.textColor1,
+                        )
+                      ],
+                    ),
+                    // Location
+                    const SizedBox(height: 20),
+                    // Stars
+                    Row(
+                      children: [
+                        Wrap(
+                          children: List.generate(
+                            5,
+                            (index) => Icon(
+                              Icons.star,
+                              color: index < gottenStars
+                                  ? AppColors.starColor
+                                  : AppColors.textColor2,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        const AppText(
+                          text: '(4.0)',
+                          color: AppColors.textColor2,
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
