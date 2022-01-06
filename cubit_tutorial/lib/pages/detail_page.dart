@@ -166,6 +166,19 @@ class _DetailPageState extends State<DetailPage> {
                         ),
                       ),
                     ),
+                    const SizedBox(height: 20),
+                    // Description Text
+                    AppLargeText(
+                      text: 'Description',
+                      color: Colors.black.withOpacity(0.8),
+                      size: 20,
+                    ),
+                    const SizedBox(height: 10),
+                    const AppText(
+                      text:
+                          'You must go for travel. Travelling helpes get rit of pressure. Go to the mountains to see the nature.',
+                      color: AppColors.mainTextColor,
+                    )
                   ],
                 ),
               ),
