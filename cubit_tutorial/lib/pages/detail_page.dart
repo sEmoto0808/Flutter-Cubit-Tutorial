@@ -1,4 +1,5 @@
 import 'package:cubit_tutorial/theme/colors.dart';
+import 'package:cubit_tutorial/widgets/app_buttons.dart';
 import 'package:cubit_tutorial/widgets/app_large_text.dart';
 import 'package:cubit_tutorial/widgets/app_text.dart';
 import 'package:flutter/material.dart';
@@ -121,6 +122,32 @@ class _DetailPageState extends State<DetailPage> {
                           color: AppColors.textColor2,
                         )
                       ],
+                    ),
+                    const SizedBox(height: 25),
+                    // People Text
+                    AppLargeText(
+                      text: 'People',
+                      color: Colors.black.withOpacity(0.8),
+                      size: 20,
+                    ),
+                    const SizedBox(height: 5),
+                    const AppText(
+                      text: 'Number of people in your group',
+                      color: AppColors.mainTextColor,
+                    ),
+                    const SizedBox(height: 10),
+                    // Buttons
+                    Wrap(
+                      children: List.generate(
+                        5,
+                        (index) => AppButtons(
+                          text: (index + 1).toString(),
+                          color: Colors.black,
+                          backgroundColor: AppColors.buttonBackground,
+                          size: 50,
+                          borderColor: AppColors.buttonBackground,
+                        ),
+                      ),
                     ),
                   ],
                 ),
