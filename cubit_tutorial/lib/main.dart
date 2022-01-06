@@ -1,4 +1,5 @@
 import 'package:cubit_tutorial/pages/bottom_navigation/main_page.dart';
+import 'package:cubit_tutorial/pages/detail_page.dart';
 import 'package:cubit_tutorial/pages/welcome_page.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: WelcomePage(),
-      home: MainPage(),
+      home: DetailPage(),
     );
   }
 }
