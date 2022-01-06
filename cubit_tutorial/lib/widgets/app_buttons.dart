@@ -41,7 +41,7 @@ class AppButtons extends StatelessWidget {
               )
             : AppText(
                 text: text!,
-                color: Colors.black,
+                color: color,
               ),
       ),
     );

@@ -13,6 +13,7 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends State<DetailPage> {
   int gottenStars = 4;
+  int selectedIndex = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -140,12 +141,28 @@ class _DetailPageState extends State<DetailPage> {
                     Wrap(
                       children: List.generate(
                         5,
-                        (index) => AppButtons(
-                          text: (index + 1).toString(),
-                          color: Colors.black,
-                          backgroundColor: AppColors.buttonBackground,
-                          size: 50,
-                          borderColor: AppColors.buttonBackground,
+                        (index) => GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedIndex = index;
+                            });
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            child: AppButtons(
+                              text: (index + 1).toString(),
+                              size: 50,
+                              color: index == selectedIndex
+                                  ? Colors.white
+                                  : Colors.black,
+                              backgroundColor: index == selectedIndex
+                                  ? Colors.black
+                                  : AppColors.buttonBackground,
+                              borderColor: index == selectedIndex
+                                  ? Colors.black
+                                  : AppColors.buttonBackground,
+                            ),
+                          ),
                         ),
                       ),
                     ),
