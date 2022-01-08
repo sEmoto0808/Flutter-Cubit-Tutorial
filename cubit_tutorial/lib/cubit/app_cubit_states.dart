@@ -1,8 +1,17 @@
-import 'package:bloc/bloc.dart';
-import 'package:cubit_tutorial/cubit/app_cubits.dart';
+import 'package:equatable/equatable.dart';
 
-class AppCubit extends Cubit<CubitStates> {
-  AppCubit() : super(InitialState()) {
-    emit(WelcomeState());
-  }
+/// Cubitで管理するStateのベースクラス
+abstract class CubitStates extends Equatable {}
+
+/// Cubitを使ってアプリを開発する時はInitialStateが必要
+class InitialState extends CubitStates {
+  @override
+  // TODO: implement props
+  List<Object> get props => [];
+}
+
+class WelcomeState extends CubitStates {
+  @override
+  // TODO: implement props
+  List<Object> get props => [];
 }
