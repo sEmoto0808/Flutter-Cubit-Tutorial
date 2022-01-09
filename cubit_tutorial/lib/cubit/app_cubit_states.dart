@@ -15,3 +15,17 @@ class WelcomeState extends CubitStates {
   // TODO: implement props
   List<Object> get props => [];
 }
+
+/// 通信中のState
+class LoadingState extends CubitStates {
+  @override
+  // TODO: implement props
+  List<Object> get props => [];
+}
+
+/// 通信に成功した時のState
+class LoadedState extends CubitStates {
+  @override
+  // TODO: implement props
+  List<Object> get props => [];
+}
