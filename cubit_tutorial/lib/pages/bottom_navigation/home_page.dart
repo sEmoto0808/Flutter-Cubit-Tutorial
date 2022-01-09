@@ -1,8 +1,12 @@
+import 'package:cubit_tutorial/cubit/app_cubit_states.dart';
+import 'package:cubit_tutorial/cubit/app_cubits.dart';
+import 'package:cubit_tutorial/model/data_model.dart';
 import 'package:cubit_tutorial/theme/colors.dart';
 import 'package:cubit_tutorial/widgets/app_large_text.dart';
 import 'package:cubit_tutorial/widgets/app_text.dart';
 import 'package:cubit_tutorial/widgets/circle_tab_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -38,26 +42,36 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Top Bar
-          _topBar(),
-          const SizedBox(height: 40),
-          // Discover Text
-          _discoverText(),
-          const SizedBox(height: 30),
-          // TabBar
-          _tabBar(),
-          // TabBarView
-          _tabBarView(),
-          const SizedBox(height: 30),
-          // Explore more Text
-          _exploreMoreText(),
-          const SizedBox(height: 10),
-          // Explore Category
-          _exploreCategory(),
-        ],
+      // NOTE: BlocBuilder経由でCubitStatesにアクセスする
+      body: BlocBuilder<AppCubits, CubitStates>(
+        builder: (context, state) {
+          if (state is LoadedState) {
+            final info = state.places;
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Top Bar
+                _topBar(),
+                const SizedBox(height: 40),
+                // Discover Text
+                _discoverText(),
+                const SizedBox(height: 30),
+                // TabBar
+                _tabBar(),
+                // TabBarView
+                _tabBarView(info),
+                const SizedBox(height: 30),
+                // Explore more Text
+                _exploreMoreText(),
+                const SizedBox(height: 10),
+                // Explore Category
+                _exploreCategory(),
+              ],
+            );
+          } else {
+            return const SizedBox.shrink();
+          }
+        },
       ),
     );
   }
@@ -121,7 +135,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 
-  Widget _tabBarView() {
+  Widget _tabBarView(List<DataModel> info) {
     return Container(
       padding: const EdgeInsets.only(left: 20),
       // サイズの指定が必要
@@ -132,7 +146,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         children: [
           ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: 3,
+            itemCount: info.length,
             itemBuilder: (context, index) {
               return Container(
                 margin: const EdgeInsets.only(
@@ -144,8 +158,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.white,
-                  image: const DecorationImage(
-                    image: AssetImage('assets/images/mountain.jpeg'),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      'http://mark.bslmeiyu.com/uploads/' + info[index].img,
+                    ),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -201,8 +217,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     color: Colors.white,
                     image: DecorationImage(
                       image: AssetImage(
-                        'assets/images/' +
-                            _imagesMap.values.elementAt(index),
+                        'assets/images/' + _imagesMap.values.elementAt(index),
                       ),
                       fit: BoxFit.cover,
                     ),
@@ -220,4 +235,3 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     );
   }
 }
-
