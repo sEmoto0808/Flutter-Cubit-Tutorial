@@ -7,4 +7,11 @@ class AppCubits extends Cubit<CubitStates> {
     // trigger
     emit(WelcomeState());
   }
+
+  void getData() {
+    try {
+      // trigger Loading
+      emit(LoadingState());
+    } catch (e) {}
+  }
 }
