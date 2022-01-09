@@ -1,4 +1,5 @@
 import 'package:cubit_tutorial/cubit/app_cubit_logics.dart';
+import 'package:cubit_tutorial/services/data_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
       ),
       // inject Cubit
       home: BlocProvider<AppCubits>(
-        create: (context) => AppCubits(),
+        // create Cubit
+        create: (context) => AppCubits(dataServices: DataServices()),
         // 画面表示
         child: const AppCubitLogics(),
       ),

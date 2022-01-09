@@ -1,5 +1,6 @@
 import 'package:cubit_tutorial/cubit/app_cubit_states.dart';
 import 'package:cubit_tutorial/cubit/app_cubits.dart';
+import 'package:cubit_tutorial/pages/bottom_navigation/main_page.dart';
 import 'package:cubit_tutorial/pages/welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,6 +23,8 @@ class _AppCubitLogicsState extends State<AppCubitLogics> {
             return const WelcomePage();
           } if (state is LoadingState) {
             return const Center(child: CircularProgressIndicator());
+          } if (state is LoadedState) {
+            return const MainPage();
           } else {
             return const SizedBox.shrink();
           }

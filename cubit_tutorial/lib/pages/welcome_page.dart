@@ -65,6 +65,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       const SizedBox(height: 40),
                       GestureDetector(
                         onTap: () {
+                          // NOTE: BlocProvider経由でCubitにアクセスする
                           BlocProvider.of<AppCubits>(context).getData();
                         },
                         child: ResponsiveButton(width: 120),

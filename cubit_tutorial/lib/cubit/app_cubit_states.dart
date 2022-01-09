@@ -1,3 +1,4 @@
+import 'package:cubit_tutorial/model/data_model.dart';
 import 'package:equatable/equatable.dart';
 
 /// Cubitで管理するStateのベースクラス
@@ -25,7 +26,11 @@ class LoadingState extends CubitStates {
 
 /// 通信に成功した時のState
 class LoadedState extends CubitStates {
+  final List<DataModel> places;
+
+  LoadedState(this.places);
+
   @override
   // TODO: implement props
-  List<Object> get props => [];
+  List<Object> get props => [places];
 }
