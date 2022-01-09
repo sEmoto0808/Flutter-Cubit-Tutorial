@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:cubit_tutorial/model/data_model.dart';
 import 'package:cubit_tutorial/services/data_services.dart';
 
 import 'app_cubit_states.dart';
@@ -20,5 +21,10 @@ class AppCubits extends Cubit<CubitStates> {
       // trigger Loaded
       emit(LoadedState(places));
     } catch (e) {}
+  }
+
+  void emitDetail(DataModel data) {
+    // trigger DetailPage
+    emit(DetailState(data));
   }
 }

@@ -34,3 +34,14 @@ class LoadedState extends CubitStates {
   // TODO: implement props
   List<Object> get props => [places];
 }
+
+/// 通信に成功した時のState
+class DetailState extends CubitStates {
+  final DataModel place;
+
+  DetailState(this.place);
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [place];
+}

@@ -148,21 +148,26 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             scrollDirection: Axis.horizontal,
             itemCount: info.length,
             itemBuilder: (context, index) {
-              return Container(
-                margin: const EdgeInsets.only(
-                  top: 10,
-                  right: 15,
-                ),
-                width: 200,
-                height: 300,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
-                  image: DecorationImage(
-                    image: NetworkImage(
-                      'http://mark.bslmeiyu.com/uploads/' + info[index].img,
+              return GestureDetector(
+                onTap: () {
+                  BlocProvider.of<AppCubits>(context).emitDetail(info[index]);
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(
+                    top: 10,
+                    right: 15,
+                  ),
+                  width: 200,
+                  height: 300,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        'http://mark.bslmeiyu.com/uploads/' + info[index].img,
+                      ),
+                      fit: BoxFit.cover,
                     ),
-                    fit: BoxFit.cover,
                   ),
                 ),
               );
