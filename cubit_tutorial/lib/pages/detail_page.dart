@@ -1,9 +1,11 @@
+import 'package:cubit_tutorial/cubit/app_cubits.dart';
 import 'package:cubit_tutorial/theme/colors.dart';
 import 'package:cubit_tutorial/widgets/app_buttons.dart';
 import 'package:cubit_tutorial/widgets/app_large_text.dart';
 import 'package:cubit_tutorial/widgets/app_text.dart';
 import 'package:cubit_tutorial/widgets/responsive_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DetailPage extends StatefulWidget {
   const DetailPage({Key? key}) : super(key: key);
@@ -46,7 +48,10 @@ class _DetailPageState extends State<DetailPage> {
               child: Row(
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // メイン画面に戻る
+                      BlocProvider.of<AppCubits>(context).goMain();
+                    },
                     icon: const Icon(Icons.menu),
                     color: Colors.white,
                   )
